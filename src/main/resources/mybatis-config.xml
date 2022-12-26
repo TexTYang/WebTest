@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"></properties>
+
+<!--typeAliases指定了类别名，package自动扫描该包下的类-->
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+<!--        日志开启-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING" />-->
+    </settings>
+
+    <typeAliases>
+        <package name="com.domain"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        url的file指向MybatisStudy根目录-->
+<!--        路径为xml文件，不可用com.test等方式-->
+<!--        <mapper url="file:TestMapperS.xml"/>-->
+<!--        <mapper url="file:src/main/java/com/testmapper/TestMapperA.xml"/>-->
+<!--        resource指向resource目录-->
+        <mapper resource="mapper/TestMapperA.xml"/>
+<!--        <mapper resource="mapper/TestMapperS.xml"/>-->
+
+        <!--        class指定Mapper接口-->
+<!--        <mapper class="com.mapper.TestMapper"/>-->
+    </mappers>
+
+
+</configuration>
